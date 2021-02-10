@@ -8,7 +8,11 @@ interface IProps {
     deleteActivity: (id: string) => void;
 }
 
-export const ActivityList: React.FC<IProps> = ({ activities, selectActivity, deleteActivity }) => {
+export default function ActivityList({
+    activities,
+    selectActivity,
+    deleteActivity,
+}: IProps) {
     return (
         <Segment clearing>
             <Item.Group divided>
@@ -44,4 +48,4 @@ export const ActivityList: React.FC<IProps> = ({ activities, selectActivity, del
             </Item.Group>
         </Segment>
     );
-};
+}

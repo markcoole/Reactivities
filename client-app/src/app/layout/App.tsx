@@ -4,10 +4,10 @@ import axios from "axios";
 
 import { Container } from "semantic-ui-react";
 import { IActivity } from "./models/activity";
-import { NavBar } from "../../features/nav/NavBar";
-import { ActivityDashboard } from "../../features/activities/dashboard/ActivityDashboard";
+import NavBar from "../../features/nav/NavBar";
+import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
 
-const App = () => {
+function App()  {
     const [activities, setActitivies] = useState<IActivity[]>([]);
     const [selectedActivity, setSelectedActivity] = useState<IActivity | null>(
         null

@@ -1,9 +1,9 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
 import { IActivity } from "../../../app/layout/models/activity";
-import { ActivityList } from "./ActivityList";
-import { ActivityDetails } from "./details/ActivityDetails";
-import { ActivityForm } from "./form/ActivityForm";
+import ActivityList from "./ActivityList";
+import ActivityDetails from "./details/ActivityDetails";
+import ActivityForm from "./form/ActivityForm";
 
 interface IProps {
     activities: IActivity[];
@@ -17,7 +17,7 @@ interface IProps {
     deleteActivity: (id: string) => void;
 }
 
-export const ActivityDashboard: React.FC<IProps> = ({
+export default function ActivityDashboard({
     activities,
     selectActivity,
     selectedActivity,
@@ -27,7 +27,7 @@ export const ActivityDashboard: React.FC<IProps> = ({
     createActivity,
     editActivity,
     deleteActivity,
-}) => {
+}: IProps) {
     return (
         <Grid>
             <Grid.Column width={10}>
@@ -57,4 +57,4 @@ export const ActivityDashboard: React.FC<IProps> = ({
             </Grid.Column>
         </Grid>
     );
-};
+}

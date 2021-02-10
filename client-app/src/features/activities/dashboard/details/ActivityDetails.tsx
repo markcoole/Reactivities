@@ -8,11 +8,11 @@ interface IProps {
     setSelectedActivity: (activity: IActivity | null) => void;
 }
 
-export const ActivityDetails: React.FC<IProps> = ({
+export default function ActivityDetails({
     activity,
     setEditMode,
     setSelectedActivity,
-}) => {
+}: IProps) {
     return (
         <Card fluid>
             <Image
@@ -45,4 +45,4 @@ export const ActivityDetails: React.FC<IProps> = ({
             </Card.Content>
         </Card>
     );
-};
+}

@@ -10,12 +10,12 @@ interface IProps {
     editActivity: (activity: IActivity) => void;
 }
 
-export const ActivityForm: React.FC<IProps> = ({
+export default function ActivityForm({
     setEditMode,
     activity: initialFormState,
     createActivity,
     editActivity,
-}) => {
+}: IProps) {
     const initializeForm = () => {
         if (initialFormState) {
             return initialFormState;
@@ -108,4 +108,4 @@ export const ActivityForm: React.FC<IProps> = ({
             </Form>
         </Segment>
     );
-};
+}

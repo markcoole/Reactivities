@@ -5,7 +5,7 @@ interface IProps {
     openCreateForm: () => void;
 }
 
-export const NavBar: React.FC<IProps> = ({ openCreateForm }) => {
+export default function NavBar({ openCreateForm }: IProps) {
     return (
         <Menu fixed="top" inverted>
             <Container>
@@ -26,4 +26,4 @@ export const NavBar: React.FC<IProps> = ({ openCreateForm }) => {
             </Container>
         </Menu>
     );
-};
+}

@@ -9,7 +9,7 @@ namespace Application.Activities
   public class Delete
   {
     public class Command : IRequest
-    {
+    { 
       public Guid Id { get; set; }
     }
 
@@ -23,7 +23,6 @@ namespace Application.Activities
 
       public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
       {
-
         var activity = await _context.Activities.FindAsync(request.Id);
 
         if (activity == null)
