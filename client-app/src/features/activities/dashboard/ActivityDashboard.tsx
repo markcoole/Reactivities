@@ -1,57 +1,56 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
-import { IActivity } from "../../../app/layout/models/activity";
-import ActivityList from "./ActivityList";
-import ActivityDetails from "./details/ActivityDetails";
-import ActivityForm from "./form/ActivityForm";
+import { Activity } from "../../../app/models/activity";
 
-interface IProps {
-    activities: IActivity[];
+import ActivityList from "./ActivityList";
+import ActivityDetails from "../details/ActivityDetails";
+import ActivityForm from "../form/ActivityForm";
+
+interface Props {
+    activities: Activity[];
+    selectedActivity: Activity | undefined;
     selectActivity: (id: string) => void;
-    selectedActivity: IActivity | null;
+    cancelSelectActivity: () => void;
     editMode: boolean;
-    setEditMode: (editMode: boolean) => void;
-    setSelectedActivity: (activity: IActivity | null) => void;
-    createActivity: (activity: IActivity) => void;
-    editActivity: (activity: IActivity) => void;
+    openForm: (id: string) => void;
+    closeForm: () => void;
+    createOrEdit: (activity: Activity) => void;
     deleteActivity: (id: string) => void;
 }
 
 export default function ActivityDashboard({
     activities,
-    selectActivity,
     selectedActivity,
-    editMode,
-    setEditMode,
-    setSelectedActivity,
-    createActivity,
-    editActivity,
     deleteActivity,
-}: IProps) {
+    selectActivity,
+    cancelSelectActivity,
+    editMode,
+    openForm,
+    closeForm,
+    createOrEdit,
+}: Props) {
     return (
         <Grid>
-            <Grid.Column width={10}>
+            <Grid.Column width="10">
                 <ActivityList
                     activities={activities}
                     selectActivity={selectActivity}
                     deleteActivity={deleteActivity}
                 />
             </Grid.Column>
-            <Grid.Column width={6}>
+            <Grid.Column width="6">
                 {selectedActivity && !editMode && (
                     <ActivityDetails
                         activity={selectedActivity}
-                        setEditMode={setEditMode}
-                        setSelectedActivity={setSelectedActivity}
+                        cancelSelectActivity={cancelSelectActivity}
+                        openForm={openForm}
                     />
                 )}
                 {editMode && (
                     <ActivityForm
-                        key={selectedActivity ? selectedActivity.id : 0}
-                        setEditMode={setEditMode}
-                        activity={selectedActivity!}
-                        createActivity={createActivity}
-                        editActivity={editActivity}
+                        closeForm={closeForm}
+                        activity={selectedActivity}
+                        createOrEdit={createOrEdit}
                     />
                 )}
             </Grid.Column>

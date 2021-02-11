@@ -1,9 +1,9 @@
 import React from "react";
-import { Item, Button, Label, Segment } from "semantic-ui-react";
-import { IActivity } from "../../../app/layout/models/activity";
+import { Button, Item, Label, Segment } from "semantic-ui-react";
+import { Activity } from "../../../app/models/activity";
 
-interface IProps {
-    activities: IActivity[];
+interface Props {
+    activities: Activity[];
     selectActivity: (id: string) => void;
     deleteActivity: (id: string) => void;
 }
@@ -12,9 +12,9 @@ export default function ActivityList({
     activities,
     selectActivity,
     deleteActivity,
-}: IProps) {
+}: Props) {
     return (
-        <Segment clearing>
+        <Segment>
             <Item.Group divided>
                 {activities.map((activity) => (
                     <Item key={activity.id}>
@@ -29,16 +29,16 @@ export default function ActivityList({
                             </Item.Description>
                             <Item.Extra>
                                 <Button
+                                    onClick={() => selectActivity(activity.id)}
                                     floated="right"
                                     content="View"
                                     color="blue"
-                                    onClick={() => selectActivity(activity.id)}
                                 />
                                 <Button
+                                    onClick={() => deleteActivity(activity.id)}
                                     floated="right"
                                     content="Delete"
                                     color="red"
-                                    onClick={() => deleteActivity(activity.id)}
                                 />
                                 <Label basic content={activity.category} />
                             </Item.Extra>

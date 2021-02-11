@@ -1,13 +1,13 @@
 import React from "react";
 import { Button, Container, Menu } from "semantic-ui-react";
 
-interface IProps {
-    openCreateForm: () => void;
+interface Props {
+    openForm: () => void;
 }
 
-export default function NavBar({ openCreateForm }: IProps) {
+export default function NavBar({ openForm }: Props) {
     return (
-        <Menu fixed="top" inverted>
+        <Menu inverted fixed="top">
             <Container>
                 <Menu.Item header>
                     <img
@@ -17,11 +17,13 @@ export default function NavBar({ openCreateForm }: IProps) {
                     />
                     Reactivities
                 </Menu.Item>
-                <Menu.Item>Activities</Menu.Item>
+                <Menu.Item name="Activities" />
                 <Menu.Item>
-                    <Button positive onClick={openCreateForm}>
-                        Create activity
-                    </Button>
+                    <Button
+                        onClick={openForm}
+                        positive
+                        content="Create Activity"
+                    />
                 </Menu.Item>
             </Container>
         </Menu>
